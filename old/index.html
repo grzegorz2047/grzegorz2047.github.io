@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Jest to strona związana z plikami serwerowymi do Minecrafta oraz działalnością grzegorza2047" />
+    <meta name="keywords" content="Minecraft Sponge Bukkit Spigot 1.13 1.14 1.8 1.7 1.7.10 Pac Pliki serwerowe Download pobranie" />
+    <meta name="author" content="grzegorz2047 / Strona www: wruczekk@gmail.com" />
+
+    <title>grzegorz2047 - Pliki serwerowe, pluginy, poradniki do Minecraft</title>
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="https://yt3.ggpht.com/-3bNFlZrokvo/AAAAAAAAAAI/AAAAAAAAAAA/F69V4yEkwn8/s100-c-k-no/photo.jpg">
+
+    <!-- Twitter Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/superhero/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- DataTables -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        table {
+            width: 100% !important;
+        }
+        
+        .container {
+            margin-top: 30px;
+            /* Prevent translator from overlapping footer content on small screens */
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                margin-top: 100px;
+            }
+        }
+        
+        @media (min-width: 1450px) {
+            .container {
+                margin-bottom: 0;
+            }
+        }
+        
+        .translator {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+
+    <!--[if IE]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- JUMBOTRON -->
+        <div class="jumbotron">
+            <h1>Witaj u grzegorza2047!</h1>
+            <p>Tworzę paczki serwerowe, pluginy do serwerów Minecraft oraz filmy na <a href="https://www.youtube.com/user/grzegorz20471" target="_top">moim kanale YouTube</a> :)</p>
+            <p>Na tej stronie możesz pobrać moje najnowsze pliki.</p>
+            <p>Chcesz pograć na serwerze bez zasad? Dołącz do <b>Anarchy</b>! IP serwera premium <b>fajnyserw.pl</b> (1.14)</p>
+            <p>Serwer <b>Anarchy</b>, jest serwerem dla zabawy, także luz :)</p>
+            <p>Link do wszystki plików serwerowych:<a href="https://mega.nz/#F!wglARahD!QI39rGLM8gecZqfFsDppMA">folder z plikami</a></p>        
+        </div>
+        <!-- /JUMBOTRON -->
+        
+        <div class="row">
+            <!-- PACZKI SERWEROWE -->
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h2><i class="fa fa-archive"></i> Paczki serwerowe</h2>
+                        <p>Gotowe paczki serwerowe ze skonfigurowanymi pluginami.</p>
+                        <p>Pobierz, rozpakuj archiwum i serwer gotowy!</p>
+                        <p><a class="btn btn-primary" href="#paczki" role="button">Zobacz &raquo;</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- /PACZKI SERWEROWE -->
+
+            <!-- PLUGINY -->
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h2><i class="fa fa-plug"></i> Pluginy</h2>
+                        <p>Autorskie pluginy pod serwer Bukkit stworzone przez grzegorza2047.</p>
+                        <p>Pobierz za darmo.</p>
+                        <p><a class="btn btn-primary" href="#pluginy" role="button">Zobacz &raquo;</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- /PLUGINY -->
+
+            <!-- KANAL YOUTUBE -->
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h2><i class="fa fa-youtube-play"></i> Kanał YouTube</h2>
+                        <p>Okazjonalnie wrzucam filmiki z przydatnymi poradami dla developerów oraz właścicieli serwerów Minecraft.</p>
+                        <p><a class="btn btn-primary" href="https://www.youtube.com/user/grzegorz20471" target="_top" role="button"><abbr title="Nie zapomnij zasubskrybować ;)">Odwiedź</abbr> kanał &raquo;</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- /KANAL YOUTUBE -->
+        </div>
+
+        <div id="paczki" class="panel panel-primary">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-archive"></i> Paczki serwerowe</h3>
+                    <p><a class="btn btn-primary" href="http://adf.ly/1gJAg5" target="_top" role="button"><abbr title="1.12 1.0 1.8 beta i 1.7.3 beta">Stare wersje plików serwerowych</abbr> kanał &raquo;</a></p>
+
+                </div>
+                <div class="panel-body">
+
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                        <!-- ########################################################################################## -->
+                        <!-- #################################### LISTA PACZEK ######################################## -->
+                        <!-- ########################################################################################## -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading14">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse14" aria-expanded="false" aria-controls="collapse-2">
+                                        Pliki serwerowe na wersję Minecraft 1.14
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.14.2</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="#" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/open?id=1ZHqX7rBBn_SXCeb8nltAgdKF34vTH-Ww" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.14</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="#" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/open?id=1ULa61a4wCSkND4w-83TWwrEPT3eRXCrh" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading000">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse000" aria-expanded="false" aria-controls="collapse-2">
+                                        Pliki serwerowe na wersję Minecraft 1.13
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse000" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading000">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.4.3 - 1.13.x</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="https://www.youtube.com/watch?v=SQi76cOO-ug&feature=youtu.be" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/open?id=1jP8lGdp8cyOHdB8i9c-CB80S1p3DCSA5" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.13.x</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="https://www.youtube.com/watch?v=SQi76cOO-ug&feature=youtu.be" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/1AnOeKrKAj-EDmBhVilljyN858YXJR6Nq/view?usp=sharing" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading00">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse00" aria-expanded="false" aria-controls="collapse-2">
+                                        Pliki serwerowe na wersję Minecraft 1.9 - 1.12
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse00" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading00">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.12</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="#" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nODJ0aUNoMnA2ck0/view" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.12</td>
+                                                    <td>Gildie BETA</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="#" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nYWgzOEdhejI5Vm8/view" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading1">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" aria-controls="collapse-2">
+                                        Pliki serwerowe na wersję Minecraft 1.11.x
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.11</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="#" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nektiSk9BU0ZmN1k/view" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading2">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse-1">
+                                        Pliki serwerowe na wersję Minecraft 1.7 - 1.10 (Gracze mogą wejść pod 1.7 do 1.10 i pvp z 1.8)
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.7 - 1.10</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="https://youtu.be/JbfINlmy-rU" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nRUMyaldOSi1ESDg/view" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading3">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse0">
+                                        Pliki serwerowe na wersję Minecraft 1.9 - 1.10
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.10</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="https://youtu.be/GEuAydm2D8c" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nRzFFaXNyMnJlMjQ/view" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading4">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse1">
+                                        Pliki serwerowe na wersję Minecraft 1.9
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.9</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="https://youtu.be/69DKYzeWlXc" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nb0NSaUN6MS1kdHM/view" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading5">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse2">
+                                        Pliki serwerowe na wersję Minecraft 1.8
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.8</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="https://youtu.be/VW4bybcerFQ" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nMzNVaFhqTmpDXzQ/view" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading6">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse3">
+                                        Pliki serwerowe kompatybilne zarówno z Minecraft 1.7 jak i 1.8
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.7 + 1.8 (NOWY DOWNLOAD + nowe bloki)</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="https://youtu.be/5tc2nR91j1M" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2namdObVNDQW1Ycm8/edit" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.7 + 1.8</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="https://youtu.be/dAniRLd0MiE" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nSWNDYWwta1cyZE0/edit" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading7">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse4">
+                                        Pliki serwerowe na wersję Minecraft 1.7.2
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Film</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.7.2</td>
+                                                    <td>Survival</td>
+                                                    <td>Spigot</td>
+                                                    <td style="text-align: center;"><a href="https://youtu.be/wdmENcXvzuI" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nZTRHSThybExjaTA/edit" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.7.2</td>
+                                                    <td>Survival</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="https://youtu.be/wdmENcXvzuI" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a></td>
+                                                    <td style="text-align: center;"><a href="https://drive.google.com/file/d/0Bw1f3oHYdM2nRFNXekZXbGFPQ1U/edit" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading8">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse5">
+                                        Pliki serwerowe na wersję Minecraft 1.6.4
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Wersja MC</th>
+                                                    <th>Typ plików</th>
+                                                    <th>Użyty silnik</th>
+                                                    <th>Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.6.4</td>
+                                                    <td>Freebuild</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="http://adf.ly/W81zS" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.6.4</td>
+                                                    <td>Hardcore</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="http://adf.ly/W827Q" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.6.4</td>
+                                                    <td>Minez</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="http://adf.ly/W82Cw" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.6.4</td>
+                                                    <td>Paintball</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="http://adf.ly/W82Id" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.6.4</td>
+                                                    <td>Skyblock</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="http://adf.ly/W82NI" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.6.4</td>
+                                                    <td>Survival</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="http://adf.ly/W82Qc" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.6.4</td>
+                                                    <td>Survival Games</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="http://adf.ly/W82VE" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.6.4</td>
+                                                    <td>Jail</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="http://adf.ly/W81v0" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1.6.4</td>
+                                                    <td>TNTRun</td>
+                                                    <td>CraftBukkit</td>
+                                                    <td style="text-align: center;"><a href="http://adf.ly/W81oi" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ########################################################################################## -->
+                        <!-- ################################# KONIEC LISTY PACZEK #################################### -->
+                        <!-- ########################################################################################## -->
+
+                    </div>
+
+                    <br>
+
+                    <p class="text-center">
+                        <a href="http://grzegorz2047.cba.pl/linki/strona.html" target="_blank" class="btn btn-primary btn-lg" role="button">Starsze wersje &raquo;</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="pluginy" class="panel panel-primary">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-plug"></i> Autorskie pluginy</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Nazwa pluginu</th>
+                                    <th>Typ silnika</th>
+                                    <th>Film</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>OpenGuild</td>
+                                    <td>CraftBukkit / Spigot</td>
+                                    <td style="text-align: center;">
+                                        <a href="https://youtu.be/Yl-7dXelreQ" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a>
+
+                                        <a href="https://youtu.be/qAZ6JziEM6Q" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a>
+                                    </td>
+                                    <td style="text-align: center;"><a href="http://adf.ly/635975/openguild" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Owce Terrorystki</td>
+                                    <td>CraftBukkit / Spigot</td>
+                                    <td style="text-align: center;">
+                                        <a href="https://youtu.be/7Ta-joAmmlE" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a>
+                                    </td>
+                                    <td style="text-align: center;"><a href="http://bc.vc/quP3Cb" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                </tr>
+
+                                <tr>
+                                    <td>PayInItemsForGuild</td>
+                                    <td>CraftBukkit / Spigot</td>
+                                    <td style="text-align: center;">
+                                        <a href="https://youtu.be/MruZoudsyDY" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a>
+
+                                        <a href="https://youtu.be/0--GXWk0PMc" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a>
+                                    </td>
+                                    <td style="text-align: center;"><a href="https://github.com/grzegorz2047/PayInItemsForGuild/blob/master/PayInItemsForGuild/src/main/java/pl/grzegorz2047/piidg/FactionsListener.java" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                </tr>
+
+                                <tr>
+                                    <td>BypassSlots</td>
+                                    <td>CraftBukkit / Spigot</td>
+                                    <td style="text-align: center;">
+                                        <a href="https://youtu.be/EOmmPtHboUM" target="_blank" class="btn btn-primary btn-xs" role="button"><i class="fa fa-youtube-play"></i></a>
+                                    </td>
+                                    <td style="text-align: center;"><a href="http://dev.bukkit.org/bukkit-plugins/bypassslots/" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                </tr>
+
+                                <tr>
+                                    <td>RegisterCounter</td>
+                                    <td>CraftBukkit / Spigot</td>
+                                    <td style="text-align: center;">
+                                        <!-- Brak filmu :C -->
+                                    </td>
+                                    <td style="text-align: center;"><a href="http://adf.ly/IIS6Z" class="btn btn-primary btn-xs" role="button"><i class="fa fa-download"></i></a></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- STOPKA -->
+        <hr>
+        <footer>
+            <p class="pull-left">&copy; grzegorz2047</p>
+            <div class="pull-right">
+                <ul class="list-inline">
+                    <!-- Email encryption lvl hard :D -->
+                    <li>Wykonanie strony: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#119;&#114;&#117;&#99;&#122;&#101;&#107;&#107;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" target="_top">&#119;&#114;&#117;&#99;&#122;&#101;&#107;&#107;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /container -->
+
+
+    <div class="translator">
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'pl',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    </div>
+
+
+    <!-- ################ -->
+    <!-- #  JAVASCRIPT  # -->
+    <!-- ################ -->
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- Twitter Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- DataTabled -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/js/dataTables.bootstrap.min.js"></script>
+
+
+    <!-- Custom JS -->
+    <script>
+        "use strict";
+
+        $(document).ready(function () {
+            $('table').DataTable({
+                paging: false,
+                "order": [],
+                "language": {
+                    processing: "Przetwarzanie...",
+                    search: "Szukaj:",
+                    lengthMenu: "Pokaż _MENU_ pozycji",
+                    info: "Pozycje od _START_ do _END_ z _TOTAL_ łącznie",
+                    infoEmpty: "Pozycji 0 z 0 dostępnych",
+                    infoFiltered: "(filtrowanie spośród _MAX_ dostępnych pozycji)",
+                    infoPostFix: "",
+                    loadingRecords: "Wczytywanie...",
+                    zeroRecords: "Nie znaleziono pasujących pozycji",
+                    emptyTable: "Brak danych",
+                    paginate: {
+                        first: "Pierwsza",
+                        previous: "Poprzednia",
+                        next: "Następna",
+                        last: "Ostatnia"
+                    },
+                    aria: {
+                        sortAscending: ": aktywuj, by posortować kolumnę rosnąco",
+                        sortDescending: ": aktywuj, by posortować kolumnę malejąco"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
