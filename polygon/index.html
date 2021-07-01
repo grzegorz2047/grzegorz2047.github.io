@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script>
+      let sourceAddress = window.prompt("Podaj adres do portela w sieci polygon skąd pobrać 0.001 matica: ");
+      let destinationAddress = window.prompt("Podaj adres do portela w sieci polygon gdzie wysłać 0.001 matica: ");
+
+      let Web3 = require("web3");
+      // test rpc is https://rpc-mumbai.matic.today for Mumbai
+      let rpc = "https://rpc-mainnet.matic.network";
+
+      const provider = new Web3.providers.HttpProvider(rpc);
+      const web3 = new Web3(provider);
+
+      // Add your private key
+      web3.eth.accounts.wallet.add("pvt-key");
+
+      // Send 0.001 MATIC
+      web3.eth
+        .sendTransaction({
+          from: sourceAddress,
+          to: destinationAddress,
+          value: web3.utils.toWei("0.001", "ether"),
+          gas: 8000000,
+        })
+        .then(function (receipt) {
+          console.log(receipt);
+        });
+    </script>
+</html>
