@@ -6,53 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script type="text/javascript">
-        window.addEventListener('load', function () {
-            if (typeof web3 !== 'undefined') {
-                console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
-                window.web3 = new Web3(web3.currentProvider);
-            }
-        })
-        function getBalance() {
-              var address, wei, balance
-              address = document.getElementById("address").value
-              try {
-                  web3.eth.getBalance(address, function (error, wei) {
-                      if (!error) {
-                          var balance = web3.utils.fromWei(wei, 'ether');
-                          document.getElementById("output").innerHTML = balance + " ETH";
-                      }
-                  });
-              } catch (err) {
-                  document.getElementById("output").innerHTML = err;
-              }
-          }
-        function sendMatic() {
-          let sourceAddress, destinationAddress, amount;
-          sourceAddress = document.getElementById("sourceAddress").value;
-          destinationAddress = document.getElementById("destinationAddress").value;
-          amount = document.getElementById("amount").value
-            web3.eth.accounts.wallet.add("pvt-key");
-
-            // Send 0.001 MATIC
-            web3.eth
-              .sendTransaction({
-                from: sourceAddress,
-                to: destinationAddress,
-                value: web3.utils.toWei(amount, "ether"),
-                gas: 8000000,
-              })
-              .then(function (receipt) {
-                console.log(receipt);
-              });
-              }
+        if (typeof window.ethereum !== 'undefined') {
+          console.log('MetaMask is installed!');
+        }
     </script>
     <body>
-      <h1>ETH Balance Fetcher</h1>
-      <p>Wyślij matica:</p>
+      <h1>Metamask hook</h1>
       <input type="text" size="50" id="sourceAddress" />
-      <input type="text" size="50" id="destinationAddress" />
-      <input type="text" size="50" id="amount" />
-      <button type="button" onClick="sendMatic();">Get Balance</button>
+      <button type="button" onClick=" ">Do it</button>
       <br />
       <br />
     <div id="output"></div>
