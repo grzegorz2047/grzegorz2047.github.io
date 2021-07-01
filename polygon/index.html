@@ -26,38 +26,33 @@
                   document.getElementById("output").innerHTML = err;
               }
           }
-    </script>
-    <script>
-//       let sourceAddress = window.prompt("Podaj adres do portela w sieci polygon skąd pobrać 0.001 matica: ");
-//       let destinationAddress = window.prompt("Podaj adres do portela w sieci polygon gdzie wysłać 0.001 matica: ");
+        function sendMatic() {
+          let sourceAddress, destinationAddress, amount;
+          sourceAddress = document.getElementById("sourceAddress").value;
+          destinationAddress = document.getElementById("destinationAddress").value;
+          amount = document.getElementById("amount").value
+            web3.eth.accounts.wallet.add("pvt-key");
 
-//       let Web3 = require("web3");
-//       // test rpc is https://rpc-mumbai.matic.today for Mumbai
-//       let rpc = "https://rpc-mainnet.matic.network";
-
-//       const provider = new Web3.providers.HttpProvider(rpc);
-//       const web3 = new Web3(provider);
-
-//       // Add your private key
-//       web3.eth.accounts.wallet.add("pvt-key");
-
-//       // Send 0.001 MATIC
-//       web3.eth
-//         .sendTransaction({
-//           from: sourceAddress,
-//           to: destinationAddress,
-//           value: web3.utils.toWei("0.001", "ether"),
-//           gas: 8000000,
-//         })
-//         .then(function (receipt) {
-//           console.log(receipt);
-//         });
+            // Send 0.001 MATIC
+            web3.eth
+              .sendTransaction({
+                from: sourceAddress,
+                to: destinationAddress,
+                value: web3.utils.toWei(amount, "ether"),
+                gas: 8000000,
+              })
+              .then(function (receipt) {
+                console.log(receipt);
+              });
+              }
     </script>
     <body>
       <h1>ETH Balance Fetcher</h1>
-      <p>Enter your Ethereum Address:</p>
-      <input type="text" size="50" id="address" />
-      <button type="button" onClick="getBalance();">Get Balance</button>
+      <p>Wyślij matica:</p>
+      <input type="text" size="50" id="sourceAddress" />
+      <input type="text" size="50" id="destinationAddress" />
+      <input type="text" size="50" id="amount" />
+      <button type="button" onClick="sendMatic();">Get Balance</button>
       <br />
       <br />
     <div id="output"></div>
