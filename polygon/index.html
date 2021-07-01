@@ -6,16 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script type="text/javascript">
-        if (typeof window.ethereum !== 'undefined') {
-          console.log('MetaMask is installed!');
-        }
+        const ethereumButton = document.querySelector('.enableEthereumButton');
+        ethereumButton.addEventListener('click', () => {
+          getAccount();
+        });
+      async function getAccount() {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
+        showAccount.innerHTML = account;
+      }
     </script>
     <body>
       <h1>Metamask hook</h1>
-      <input type="text" size="50" id="sourceAddress" />
+      <button class="enableEthereumButton">Połącz się z metamask</button>
+      <h2>Adres twojego konta to <span class="showAccount"></span></h2>
       <button type="button" onClick=" ">Do it</button>
       <br />
       <br />
-    <div id="output"></div>
 </body>
 </html>
