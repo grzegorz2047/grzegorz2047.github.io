@@ -10,7 +10,8 @@
 </head>
 <style>
     img {
-        max-width: 650px;
+        max-width: 100%; 
+        height: auto;
     }
     .posts {
         font-family: Arial, Helvetica, sans-serif; 
@@ -38,7 +39,7 @@
                     hive.api.getContent(author, permlink, function(errs, article) {
                             articlesList += "<h2>" + article.title + "</h2>" + "\n";
                             articlesList += "<div>" + article.body + "</div>" + "\n";   
-                            document.getElementById("post-list").innerHTML = marked.parse(articlesList);       
+                            document.getElementById("post-list").innerHTML = marked.parse(articlesList); 
                     });
                 });
             });
