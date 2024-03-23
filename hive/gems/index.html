@@ -9,7 +9,7 @@
     <link href="https://bootswatch.com/5/cyborg/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://bootswatch.com/5/cyborg/bootstrap.rtl.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="./js/script.js"></script>
-    <title>Test hive-tx</title>
+    <title>#Polish tools</title>
   </head>
   <style>
     .container {
@@ -32,10 +32,16 @@
            You can manipulate ratio to change reward to vote ratio.
            If you change ratio or number of posts to check, it will automatically refresh list.
         </p>
+        <a href="https://hive.blog/@grzegorz2047">If you find it useful, donate my work at hive.blog/@grzegorz2047</a>
         <div>
             <fieldset>
+                <label for="trendingTopic" class="form-label mt-4">If empty - global trending, otherwise specific tag</label>
+                <input type="text" class="form-control" id="trendingTopic" aria-describedby="trendingTopicHelp" placeholder="Type tag or leave empty" required onchange="refreshList()">
+                <small id="trendingTopicHelp" class="form-text text-muted">Type tag to check trending, or leave empty to see global</small>
+            </fieldset>
+            <fieldset>
                 <label for="postsToCheck" class="form-label mt-4">Number of posts to check</label>
-                <input type="number" maxValue="100" class="form-control" id="postsToCheck" aria-describedby="postsToCheckHelp" placeholder="Enter number of posts to check" required onchange="refreshList()" value="50">
+                <input type="number" value="50" class="form-control" id="postsToCheck" aria-describedby="postsToCheckHelp" placeholder="Enter number of posts to check" required onchange="refreshList()">
                 <small id="postsToCheckHelp" class="form-text text-muted">Type number of posts to check from 1 to 100</small>
             </fieldset>
             <fieldset>
