@@ -62,7 +62,8 @@ function refreshList() {
             requestParameters
           )
         .then(res => {
-            console.log('Get articles:', res)
+            console.log('Get articles:', res) 
+            let gems = [];
             res.result.forEach(article => {
                 let pendingReward = article['pending_payout_value'].replace('HBD','').trim();
                 let numberOfVotes = article['active_votes'].length
@@ -74,25 +75,27 @@ function refreshList() {
                 let msec = diff;
                 let hoursSinceCreated = Math.floor(msec / 1000 / 60 / 60);
                 const isLittleGem = valueRatio > minimumValueRatio && hoursSinceCreated <= 24
-                let gems = [];
                 if (isLittleGem) {
-                    console.log(hoursSinceCreated)
-                    let row = document.createElement("li");
-                    let ratioBadge = document.createElement("span");
-                    let link = document.createElement("a");
-                    const url = 'https://peakd.com/' + '@' + article['author'] + '/' + article['permlink'];
-                    row.classList = "list-group-item list-group-item-primary d-flex justify-content-between align-items-center";
-                    ratioBadge.classList = "badge bg-primary rounded-pill";
-                    ratioBadge.innerText = valueRatio.toPrecision(2)
-                    link.text = url;
-                    link.href = url;
-                    link.target = "_blank";
-                    row.appendChild(link);
-                    row.appendChild(ratioBadge);
-                    document.getElementById('gem-list').appendChild(row);
-
+                    article['valueRatio'] = valueRatio;
+                    gems.push(article)
                 }
             });
+            gems.forEach(article=>{
+                let row = document.createElement("li");
+                let ratioBadge = document.createElement("span");
+                let link = document.createElement("a");
+                const url = 'https://peakd.com/' + '@' + article['author'] + '/' + article['permlink'];
+                row.classList = "list-group-item list-group-item-primary d-flex justify-content-between align-items-center";
+                ratioBadge.classList = "badge bg-primary rounded-pill";
+                ratioBadge.innerText = article['valueRatio'].toPrecision(2);
+                link.text = url;
+                link.href = url;
+                link.target = "_blank";
+                row.appendChild(link);
+                row.appendChild(ratioBadge);
+                document.getElementById('gem-list').appendChild(row);
+            })
+
         })
 }
 // get accounts
