@@ -67,9 +67,16 @@ function refreshList() {
                 let pendingReward = article['pending_payout_value'].replace('HBD','').trim();
                 let numberOfVotes = article['active_votes'].length
                 let valueRatio = pendingReward / numberOfVotes;
-                const isLittleGem = valueRatio > minimumValueRatio
+                let postAgeTime = article['created'] 
+                let now = new Date();
+                var articleCreated = new Date(postAgeTime);
+                let diff = now - articleCreated;
+                let msec = diff;
+                let hoursSinceCreated = Math.floor(msec / 1000 / 60 / 60);
+                const isLittleGem = valueRatio > minimumValueRatio && hoursSinceCreated <= 24
                 let gems = [];
                 if (isLittleGem) {
+                    console.log(hoursSinceCreated)
                     let row = document.createElement("li");
                     let ratioBadge = document.createElement("span");
                     let link = document.createElement("a");
