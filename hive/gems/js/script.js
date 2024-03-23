@@ -74,7 +74,8 @@ function refreshList() {
                 let diff = now - articleCreated;
                 let msec = diff;
                 let hoursSinceCreated = Math.floor(msec / 1000 / 60 / 60);
-                const isLittleGem = valueRatio > minimumValueRatio && hoursSinceCreated <= 24
+                const maxHours = document.getElementById("maxTimeSincePostCreation").value;
+                const isLittleGem = valueRatio > minimumValueRatio && hoursSinceCreated <= maxHours
                 if (isLittleGem) {
                     article['valueRatio'] = valueRatio;
                     gems.push(article)
