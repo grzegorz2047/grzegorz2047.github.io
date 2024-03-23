@@ -48,12 +48,16 @@ function refreshList() {
     document.getElementById('gem-list').innerHTML = '';
     const minimumValueRatio = document.getElementById('gemRatio').value;
     const numberOfPostsToCheckInTrending = document.getElementById('postsToCheck').value;
+    let requestParameters = {
+        "limit": numberOfPostsToCheckInTrending
+    }
+    const specificTopic = document.getElementById("trendingTopic").value;
+    if(specificTopic){
+        requestParameters["tag"] = specificTopic
+    }
     hiveTx
         .call('condenser_api.get_discussions_by_trending', [
-            
-            {
-              "limit": numberOfPostsToCheckInTrending
-            }
+            requestParameters
           ])
         .then(res => {
             console.log('Get articles:', res)
