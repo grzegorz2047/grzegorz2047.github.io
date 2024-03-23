@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/hive-tx/dist/hive-tx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+    <link href="https://bootswatch.com/5/cyborg/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://bootswatch.com/5/cyborg/bootstrap.rtl.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="./js/script.js"></script>
+    <title>Test hive-tx</title>
+  </head>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+    }
+    .list-group {
+        font-size: smaller;
+    }
+  </style>
+  <body onload="refreshList()">
+    <div class="container">
+        <h1>Gem finder</h1>
+        <p>This website allows you to find little gems in trending articles. 
+           Formula is simple. Gem is when 10$ post is voted by less then 100 people. 
+           You can manipulate ratio to change reward to vote ratio.
+           If you change ratio or number of posts to check, it will automatically refresh list.
+        </p>
+
+        <div>
+            <fieldset>
+                <label for="postsToCheck" class="form-label mt-4">Number of posts to check</label>
+                <input type="number" maxValue="100" class="form-control" id="postsToCheck" aria-describedby="postsToCheckHelp" placeholder="Enter number of posts to check" required onchange="refreshList()" value="50">
+                <small id="postsToCheckHelp" class="form-text text-muted">Type number of posts to check from 1 to 100</small>
+            </fieldset>
+            <fieldset>
+                <label for="gemRatio" class="form-label mt-4">Post Value to vote ratio</label>
+                <input type="number" class="form-control" id="gemRatio" aria-describedby="gemRatioHelp" placeholder="Enter ratio value" required onchange="refreshList()" value="0.5">
+                <small id="gemRatioHelp" class="form-text text-muted">Type ratio from 0.1 to 1.5, to see what post is Valueable but without many votes</small>
+            </fieldset>
+        </div>
+        <button type="button" class="btn btn-info" onclick="refreshList()">Refresh list</button>
+        <ul id="gem-list" class="list-group"></ul>
+    </div>
+
+  </body>
+</html>
