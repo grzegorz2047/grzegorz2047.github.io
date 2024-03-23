@@ -34,6 +34,17 @@
         </p>
         <a href="https://hive.blog/@grzegorz2047">If you find it useful, donate my work at hive.blog/@grzegorz2047</a>
         <div>
+          <fieldset>
+            <label for="listType" class="form-label mt-4">Choose what list should load</label>
+            <select class="form-select" id="listType" onchange="refreshList()">
+              <option selected>trending</option>
+              <option>created</option>
+              <option>hot</option>
+              <option>promoted</option>
+              <option>payout</option>
+              <option>payout_comments</option>
+            </select>
+          </fieldset>
             <fieldset>
                 <label for="trendingTopic" class="form-label mt-4">If empty - global trending, otherwise specific tag</label>
                 <input type="text" class="form-control" id="trendingTopic" aria-describedby="trendingTopicHelp" placeholder="Type tag or leave empty" required onchange="refreshList()">
