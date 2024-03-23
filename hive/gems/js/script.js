@@ -48,8 +48,9 @@ function refreshList() {
     document.getElementById('gem-list').innerHTML = '';
     const minimumValueRatio = document.getElementById('gemRatio').value;
     const numberOfPostsToCheckInTrending = document.getElementById('postsToCheck').value;
+    const getListType = document.getElementById("listType").value;
     let requestParameters = {
-        "sort": "trending",
+        "sort": getListType,
         "limit": numberOfPostsToCheckInTrending
     }
     const specificTopic = document.getElementById("trendingTopic").value;
