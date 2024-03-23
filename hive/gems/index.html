@@ -45,6 +45,10 @@
               <option>payout_comments</option>
             </select>
           </fieldset>
+          <fieldset>
+            <label for="maxTimeSincePostCreation" class="form-label mt-4">Type hours since post created</label>
+            <input type="text" class="form-control" id="maxTimeSincePostCreation" aria-describedby="trendingTopicHelp" placeholder="Type max post age time in hours" required onchange="refreshList()" value="24">
+          </fieldset>
             <fieldset>
                 <label for="trendingTopic" class="form-label mt-4">If empty - global trending, otherwise specific tag</label>
                 <input type="text" class="form-control" id="trendingTopic" aria-describedby="trendingTopicHelp" placeholder="Type tag or leave empty" required onchange="refreshList()">
