@@ -67,9 +67,9 @@ function refreshList() {
                     let ratioBadge = document.createElement("span");
                     let link = document.createElement("a");
                     const url = 'https://peakd.com/' + '@' + article['author'] + '/' + article['permlink'];
-                    row.classList = "list-group-item list-group-item-success d-flex justify-content-between align-items-center";
+                    row.classList = "list-group-item list-group-item-primary d-flex justify-content-between align-items-center";
                     ratioBadge.classList = "badge bg-primary rounded-pill";
-                    ratioBadge.value = valueRatio;
+                    ratioBadge.text = valueRatio;
                     link.text = url;
                     link.href = url;
                     link.target = "_blank";
