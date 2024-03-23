@@ -81,6 +81,9 @@ function refreshList() {
                     gems.push(article)
                 }
             });
+            gems.sort((articleA, articleB) => {
+                return new Date(articleA['created']) - new Date(articleB['created'])
+            }).reverse();
             gems.forEach(article=>{
                 let row = document.createElement("li");
                 let ratioBadge = document.createElement("span");
