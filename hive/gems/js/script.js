@@ -49,6 +49,7 @@ function refreshList() {
     const minimumValueRatio = document.getElementById('gemRatio').value;
     const numberOfPostsToCheckInTrending = document.getElementById('postsToCheck').value;
     let requestParameters = {
+        "sort": "trending",
         "limit": numberOfPostsToCheckInTrending
     }
     const specificTopic = document.getElementById("trendingTopic").value;
@@ -56,9 +57,9 @@ function refreshList() {
         requestParameters["tag"] = specificTopic
     }
     hiveTx
-        .call('condenser_api.get_discussions_by_trending', [
+        .call('bridge.get_ranked_posts', 
             requestParameters
-          ])
+          )
         .then(res => {
             console.log('Get articles:', res)
             res.result.forEach(article => {
@@ -66,6 +67,7 @@ function refreshList() {
                 let numberOfVotes = article['active_votes'].length
                 let valueRatio = pendingReward / numberOfVotes;
                 const isLittleGem = valueRatio > minimumValueRatio
+                let gems = [];
                 if (isLittleGem) {
                     let row = document.createElement("li");
                     let ratioBadge = document.createElement("span");
