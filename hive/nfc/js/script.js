@@ -1,38 +1,38 @@
 async function readNFCData() {
     const ndef = new NDEFReader();
-ndef
-  .scan()
-  .then(() => {
-    console.log("Scan started successfully.");
-    ndef.onreadingerror = (event) => {
-      console.log(
-        "Error! Cannot read data from the NFC tag. Try a different one?",
-      );
-    };
-    ndef.onreading = (event) => {
-        console.log("NDEF message read.");
-        const message = event.message;
-        for (const record of message.records) {
-            console.log("Record type:  " + record.recordType);
-            console.log("MIME type:    " + record.mediaType);
-            console.log("Record id:    " + record.id);
-            switch (record.recordType) {
-            case "text":
-                // TODO: Read text record with record data, lang, and encoding.
-                break;
-            case "url":
-                // TODO: Read URL record with record data.
-                break;
-            default:
-                // TODO: Handle other records with record data.
-            }
-        }
-    };
-  })
-  .catch((error) => {
-    console.log(`Error! Scan failed to start: ${error}.`);
-  });
-}
+    ndef
+        .scan()
+        .then(() => {
+            alert("Scan started successfully.");
+            ndef.onreadingerror = (event) => {
+            alert(
+                "Error! Cannot read data from the NFC tag. Try a different one?",
+            );
+            };
+            ndef.onreading = (event) => {
+                alert("NDEF message read.");
+                const message = event.message;
+                for (const record of message.records) {
+                    alert("Record type:  " + record.recordType);
+                    alert("MIME type:    " + record.mediaType);
+                    alert("Record id:    " + record.id);
+                    switch (record.recordType) {
+                    case "text":
+                        // TODO: Read text record with record data, lang, and encoding.
+                        break;
+                    case "url":
+                        // TODO: Read URL record with record data.
+                        break;
+                    default:
+                        // TODO: Handle other records with record data.
+                    }
+                }
+            };
+        })
+        .catch((error) => {
+            console.log(`Error! Scan failed to start: ${error}.`);
+        });
+    }
 async function writeNFCData() {
     const ndef = new NDEFReader();
     let ignoreRead = false;
