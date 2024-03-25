@@ -30,7 +30,7 @@ async function readNFCData() {
             };
         })
         .catch((error) => {
-            console.log(`Error! Scan failed to start: ${error}.`);
+            alert(`Error! Scan failed to start: ${error}.`);
         });
     }
 async function writeNFCData() {
