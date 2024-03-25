@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/hive-tx/dist/hive-tx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+    <link href="https://bootswatch.com/5/cyborg/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://bootswatch.com/5/cyborg/bootstrap.rtl.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="./js/script.js"></script>
+    <title>Test hive-tx</title>
+  </head>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+    }
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+
+    }
+  </style>
+  <body onload="init()">
+    <div class="container">
+      <button disabled type="button" class="btn btn-info" onclick="setKey()">Add posting key (in your browser memory)</button>
+      <div class="center">
+        <label for="accountName" class="form-label mt-4">Account name</label>
+        <input type="text" class="form-control" id="accountName" aria-describedby="accountNameHelp" placeholder="Enter account name" value="grzegorz2047">
+        <small id="accountNameHelp" class="form-text text-muted">Type account name to check account stats</small>
+      </div>
+    <div >
+      <fieldset >
+        <button  type="button" class="btn btn-info" onclick="add()">Add posting key (in your browser memory)</button>
+
+      </fieldset>
+      <fieldset class="center" >
+        <label for="accountName" class="form-label mt-4">Account name</label>
+        <input type="text" class="form-control" id="accountName" aria-describedby="accountNameHelp" placeholder="Enter account name" value="grzegorz2047">
+        <small id="accountNameHelp" class="form-text text-muted">Type account name to check account stats</small>
+      </fieldset>
+    </div>
+
+      
+      <button type="button" class="btn btn-primary" onclick="loadStats(document.getElementById('accountName').value)">Vote on post</button>
+
+    </div>
+    <script>
+    
+    </script>
+  </body>
+</html>
