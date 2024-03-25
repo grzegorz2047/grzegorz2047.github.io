@@ -11,7 +11,9 @@ ndef
     };
     ndef.onreading = (event) => {
       console.log("NDEF message read.");
-      console.log(event)
+      alert(event)
+      alert(Object.keys(event))
+      alert(Object.values(event))
     };
   })
   .catch((error) => {

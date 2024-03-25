@@ -19,6 +19,9 @@
       margin-right: auto;
       width: 80%;
     }
+    button {
+        margin-bottom: 1rem;
+    }
     .list-group {
         margin-top: 1rem;
         font-size: smaller;
@@ -31,8 +34,13 @@
         </p>
         <a href="https://hive.blog/@grzegorz2047">If you find it useful, donate my work at hive.blog/@grzegorz2047</a>
  
-        <button type="button" class="btn btn-info" onclick="readNFCData()">READ</button>
-
+        <button type="button" class="btn btn-info" onclick="readNFCData()">READ NFC</button>
+        <fieldset>
+            <label for="trendingTopic" class="form-label mt-4">url to inject to NFC tag</label>
+            <input type="text" class="form-control" id="trendingTopic" aria-describedby="trendingTopicHelp" placeholder="Type tag or leave empty" required onchange="refreshList()">
+            <small id="trendingTopicHelp" class="form-text text-muted">Type url to write</small>
+        </fieldset>
+        <button type="button" class="btn btn-info" onclick="writeNFCData()">WRITE NFC</button>
     </div>
 
   </body>
