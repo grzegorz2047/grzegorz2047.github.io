@@ -8,7 +8,7 @@
   let inputText = "";
   function sendRequest() {
     inputText += document.getElementById("input-text").value;
-      fetch("185.25.151.208:8080/completions", {
+      fetch("http://185.25.151.208:8080/completions", {
       method: "POST",
       body: JSON.stringify({
         "prompt": inputText,
