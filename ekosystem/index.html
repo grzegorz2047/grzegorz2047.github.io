@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>NEAT — Laboratorium Ekosystemu 2.0</title>
+<style>
+  :root{
+    --bg:#0e1418; --panel:#141d22; --panel2:#18242a; --line:#243138;
+    --ink:#e9e4d8; --muted:#8ba0a6; --dim:#5f7278;
+    --grass:#3f6b3a; --grass2:#527f45;
+    --plant:#8ecb5c; --sheep:#f2eede; --wolf:#d98a3f;
+    --teal:#4fb8a8; --amber:#e0a45a; --red:#d9695f; --green:#6cc57f;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden;
+    -webkit-font-smoothing:antialiased;}
+  .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
+  #app{display:flex;height:100%;width:100%}
+  
+  /* ---------- World ---------- */
+  #stage{position:relative;flex:1 1 auto;min-width:0;background:
+     radial-gradient(120% 90% at 50% 0%, #16232a 0%, #0e1418 70%);}
+  #world{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+  #world:active{cursor:grabbing}
+  .brand{position:absolute;top:14px;left:16px;pointer-events:none;user-select:none}
+  .brand h1{margin:0;font-size:14px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink);}
+  .brand h1 b{color:var(--teal);font-weight:800}
+  .brand p{margin:3px 0 0;font-size:11px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
+  .hint{position:absolute;bottom:12px;left:16px;font-size:11px;color:var(--dim);pointer-events:none;
+    letter-spacing:.03em}
+  .hint b{color:var(--muted);font-weight:600}
+  
+  /* legend chips */
+  .legend{position:absolute;top:14px;right:16px;display:flex;gap:14px;pointer-events:none}
+  .legend span{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);letter-spacing:.05em}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  
+  /* ---------- Panel ---------- */
+  #panel{flex:0 0 350px;min-width:350px;background:var(--panel);border-left:1px solid var(--line);
+    display:flex;flex-direction:column;overflow-y:scroll;overflow-x:hidden} /* Blokada scrollbara i stała szerokość */
+    
+  .sec{padding:16px 18px;border-bottom:1px solid var(--line)}
+  .sec h2{margin:0 0 12px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+    font-weight:700;display:flex;justify-content:space-between;align-items:center}
+  .sec h2 em{font-style:normal;color:var(--teal)}
+  
+  #netWrap{position:relative;background:var(--panel2);border:1px solid var(--line);border-radius:8px;
+    height:220px;min-height:220px;overflow:hidden; width:100%;} /* Sztywna wysokość */
+  #net{display:block;width:100%;height:100%}
+  
+  .netmeta{display:flex;gap:14px;margin-top:10px;flex-wrap:wrap}
+  .netmeta div{font-size:11px;color:var(--muted);min-width:0}
+  .netmeta div b{display:block;font-size:15px;color:var(--ink);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .selnone{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    text-align:center;font-size:12px;color:var(--dim);padding:20px;line-height:1.5}
+    
+  /* stats grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:9px 10px;
+    min-height:56px;min-width:0;display:flex;flex-direction:column;justify-content:space-between} /* Sztywny layout statystyk */
+  .stat .k{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+  .stat .v{font-size:19px;font-weight:700;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} /* Blokada zawijania */
+  
+  #chartWrap{margin-top:12px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;
+    height:92px;min-height:92px;overflow:hidden} /* Sztywna wysokość wykresu */
+  #chart{display:block;width:100%;height:100%}
+  #evoChartWrap{background:var(--panel2);border:1px solid var(--line);border-radius:8px;
+    height:76px;min-height:76px;overflow:hidden;position:relative}
+  #evoChart{display:block;width:100%;height:100%}
+  
+  /* controls */
+  .row{display:flex;gap:8px;margin-bottom:10px}
+  button{font:inherit;color:var(--ink);background:var(--panel2);border:1px solid var(--line);
+    border-radius:7px;padding:8px 10px;cursor:pointer;flex:1;font-size:12.5px;letter-spacing:.02em;
+    transition:.12s border-color,.12s background}
+  button:hover{border-color:var(--teal);background:#1c2b31}
+  button.primary{background:var(--teal);border-color:var(--teal);color:#08201d;font-weight:700}
+  button.primary:hover{filter:brightness(1.08)}
+  button.tiny{flex:0 0 auto;padding:6px 10px;font-size:12px}
+  
+  .seg{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--panel2)}
+  .seg button{border:0;border-radius:0;border-right:1px solid var(--line);flex:1}
+  .seg button:last-child{border-right:0}
+  .seg button.on{background:var(--teal);color:#08201d;font-weight:700}
+  
+  .slider{margin:12px 0 2px}
+  .slider label{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);
+    margin-bottom:6px;letter-spacing:.03em}
+  .slider label b{color:var(--ink);font-weight:700}
+  input[type=range]{width:100%;-webkit-appearance:none;height:4px;border-radius:3px;
+    background:var(--line);outline:none;margin:0}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+    background:var(--teal);cursor:pointer;border:2px solid var(--panel);}
+  input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--teal);
+    cursor:pointer;border:2px solid var(--panel);}
+    
+  .toggle{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--muted);
+    padding:6px 0;cursor:pointer}
+  .sw{width:34px;height:19px;border-radius:11px;background:var(--line);position:relative;transition:.15s}
+  .sw::after{content:"";position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;
+    background:var(--dim);transition:.15s}
+  .toggle.on .sw{background:var(--teal)}
+  .toggle.on .sw::after{left:17px;background:#08201d}
+  
+  .foot{padding:14px 18px;font-size:10.5px;color:var(--dim);line-height:1.55}
+
+  .sechelp{margin:-6px 0 12px;font-size:11px;line-height:1.5;color:var(--muted)}
+  .stat, .netmeta div, .sec h2{cursor:help}
+  
+  @media (max-width:820px){
+    #app{flex-direction:column}
+    #panel{flex:0 0 auto;max-height:46%;border-left:0;border-top:1px solid var(--line);overflow-y:auto}
+    .legend{display:none}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <canvas id="world"></canvas>
+    <div class="brand">
+      <h1>NEAT · Ekosystem<b>.</b></h1>
+      <p>NEAT 2.0 (Pełne gatunkowanie)</p>
+      <p class="mono" style="margin-top:4px;text-transform:none;letter-spacing:.04em;color:var(--muted)" title="Łączna liczba kroków (ticków) symulacji od ostatniego resetu.">Tick <span id="tick">0</span></p>
+    </div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--sheep)"></i>Owce</span>
+      <span><i class="dot" style="background:var(--wolf)"></i>Wilki</span>
+      <span><i class="dot" style="background:var(--plant)"></i>Rośliny</span>
+      <span title="Miejsce narodzin wilka — tam dostarcza upolowane jedzenie i tam rodzą się jego szczenięta."><i class="dot" style="background:#b48c5a"></i>Legowiska</span>
+    </div>
+    <div class="hint">Przeciągnij, by przesunąć · kółko/szczypta = zoom · <b>kliknij zwierzę</b>, aby zobaczyć jego mózg</div>
+  </div>
+
+  <aside id="panel">
+    <div class="sec">
+      <h2>Mózg osobnika <em id="selLabel">—</em></h2>
+      <p class="sechelp">Każdy zmysł (np. "Roślina") to trzy liczby: <b>blisko</b> — jak bardzo cel jest w zasięgu, <b>bok</b> — czy jest z lewej czy z prawej, <b>przód</b> — czy jest z przodu czy z tyłu względem kierunku ruchu. Dodatkowo "Głód" mówi zwierzęciu, czy jest syte czy głodne (widać to też po kolorze na mapie: jaśniejszy = syty, ciemniejszy z pomarańczową kropką = głodny).</p>
+      <div class="seg" id="brainSeg" style="margin-bottom:10px">
+        <button data-sp="sheep" class="on">🐑 Najlepsza owca</button>
+        <button data-sp="wolf">🐺 Najlepszy wilk</button>
+      </div>
+      <div id="netWrap">
+        <canvas id="net"></canvas>
+        <div class="selnone" id="selNone">Ładowanie sieci…</div>
+      </div>
+      <div class="netmeta mono">
+        <div title="Liczba neuronów w sieci: wejścia zmysłowe (co widzi/czuje) + warstwy ukryte + wyjścia sterujące (skręt, ruch, rozmnażanie…).">Neurony<b id="mNodes">–</b></div>
+        <div title="Sensowne / wszystkie aktywne połączenia. 'Sensowne' = waga na tyle duża, że realnie wpływa na decyzję, nie ginie w zaokrągleniu. NEAT nigdy nie usuwa niepotrzebnych połączeń, tylko dodaje — więc część aktywnych połączeń to ewolucyjny szum o znikomej wadze.">Połączenia<b id="mConns">–</b></div>
+        <div title="Numer gatunku NEAT tego osobnika. NEAT grupuje osobniki o podobnej strukturze/wagach sieci w ten sam gatunek, żeby nowe, jeszcze niedopracowane pomysły konkurowały głównie między sobą, a nie od razu z całą populacją.">Gatunek<b id="mSpecies">–</b></div>
+        <div title="Wiek osobnika liczony w tickach symulacji.">Wiek<b id="mAge">–</b></div>
+      </div>
+    </div>
+
+    <!-- Etap 3 i 4: Panel Statystyk i Genotypu -->
+    <div class="sec" id="statsSec" style="display:none;">
+      <h2>Statystyki & Geny</h2>
+      <div class="grid mono" style="margin-bottom: 8px;">
+        <div class="stat" title="Gatunek NEAT, do którego należy ten osobnik — grupa osobników o podobnej strukturze sieci."><div class="k">Gatunek NEAT</div><div class="v" id="stSpecies">—</div></div>
+        <div class="stat" title="Najlepszy przedstawiciel (mistrz) tego samego gatunku NEAT z ostatniej oceny epoki."><div class="k">Champion</div><div class="v" id="stChampion">—</div></div>
+        <div class="stat" title="Najwyższy fitness osiągnięty przez cały ten gatunek NEAT, nie tylko tego osobnika."><div class="k">Fitness gat.</div><div class="v" id="stSpeciesFit">0</div></div>
+      </div>
+      <div class="grid mono" style="margin-bottom: 8px;">
+        <div class="stat" title="Łączny wynik przystosowania tego osobnika — suma punktów za wiek, jedzenie/polowania, potomstwo, energię i inne czynniki. Im wyższy, tym większa szansa na przekazanie genów dalej."><div class="k">Fitness</div><div class="v" id="stFit">0</div></div>
+        <div class="stat" title="Liczba zjedzonych roślin w ciągu życia (dotyczy owiec)."><div class="k">Zjedzone</div><div class="v" id="stPlants">0</div></div>
+        <div class="stat" title="Liczba upolowanych owiec w ciągu życia (dotyczy wilków)."><div class="k">Zabójstwa</div><div class="v" id="stKills">0</div></div>
+        <div class="stat" title="Liczba dzieci spłodzonych przez tego osobnika."><div class="k">Potomstwo</div><div class="v" id="stChildren" style="color:var(--amber)">0</div></div>
+        <div class="stat" title="Łączny dystans przebyty przez to zwierzę od narodzin, w jednostkach świata."><div class="k">Dystans</div><div class="v" id="stDist">0</div></div>
+        <div class="stat" title="Numer pokolenia genomu — ile razy krzyżowano/mutowano go od pierwotnego przodka."><div class="k">Pokolenie</div><div class="v" id="stGen" style="color:var(--teal)">0</div></div>
+      </div>
+      <div class="grid mono" style="margin-bottom: 8px;">
+        <div class="stat" title="Średnia energia posiadana przez to zwierzę w trakcie życia."><div class="k">Śr. energia</div><div class="v" id="stAvgE">0.0</div></div>
+        <div class="stat" title="Ile jedzenia/zabójstw przypada na jednostkę przebytego dystansu — jak oszczędnie zwierzę zdobywa pożywienie względem wysiłku."><div class="k">Efektywność</div><div class="v" id="stEff">0.00</div></div>
+        <div class="stat" title="Jaki procent maksymalnego możliwego wieku (genetyczny limit) to zwierzę już przeżyło."><div class="k">Przetrwanie</div><div class="v" id="stSurvival">0%</div></div>
+      </div>
+      <div class="grid mono">
+        <div class="stat" title="Genetyczna cecha ciała: maksymalna prędkość ruchu tego zwierzęcia i jego potomstwa."><div class="k">Cecha: prędkość</div><div class="v" id="stSpeed">0.0</div></div>
+        <div class="stat" title="Genetyczna cecha ciała: zużycie energii na tick w spoczynku — im wyższe, tym szybciej zwierzę głodnieje."><div class="k">Cecha: metabolizm</div><div class="v" id="stMeta">0.0</div></div>
+        <div class="stat" title="Genetyczna cecha ciała: zasięg widzenia w jednostkach świata."><div class="k">Cecha: wzrok</div><div class="v" id="stVision">0</div></div>
+        <div class="stat" title="Próg wieku LUB energii, jaki zwierzę musi osiągnąć, żeby w ogóle mogło próbować się rozmnażać."><div class="k">Dojrzałość</div><div class="v" id="stMaturity">0 / 0</div></div>
+      </div>
+      <div class="stat" style="margin-top:8px; min-height:auto; grid-column:1 / -1;" title="Łańcuch identyfikatorów przodków tego osobnika, do 6 pokoleń wstecz."><div class="k">Rodowód</div><div class="v" id="stLineage" style="font-size:12px; white-space:normal; overflow:visible; line-height:1.35;">—</div></div>
+    </div>
+
+    <div class="sec">
+      <h2>Ewolucja NEAT <em id="epNum" class="mono" title="Co 800 ticków symulacji NEAT ocenia całą populację: dzieli osobniki na gatunki wg podobieństwa sieci i przelicza fitness w obrębie każdego gatunku.">Epoka 1</em></h2>
+      <p class="sechelp">Co 800 ticków następuje ocena epoki: zwierzęta grupowane są w gatunki NEAT (osobniki o podobnej sieci), a najlepsze w każdym gatunku są chronione przed wymarciem.</p>
+      <div class="grid mono" style="grid-template-columns:1fr 1fr">
+        <div class="stat" title="Ile ticków minęło od ostatniej zapaści populacji (spadku poniżej 10 owiec lub 2 wilków na koniec epoki). Gdy ta wartość przekroczy Rekord Świata, sama staje się nowym rekordem."><div class="k">Czas bez zapaści</div><div class="v" id="epUptime" style="color:var(--sheep)">0</div></div>
+        <div class="stat" title="Najdłuższy czas (w tickach), przez jaki ekosystem kiedykolwiek przetrwał bez zapaści — czyli bez spadku poniżej 10 owiec lub 2 wilków na koniec epoki. Po zapaści licznik bieżący startuje od zera, ale ten rekord zostaje."><div class="k">Rekord Świata</div><div class="v" id="epRec" style="color:var(--green)">0</div></div>
+      </div>
+      <div id="evoChartWrap" style="margin-top:12px" title="Czas bez zapaści próbkowany przy każdej ocenie epoki (co 800 ticków), z linią trendu pokazującą, czy ta wartość rośnie w miarę kolejnych ewolucji.">
+        <canvas id="evoChart"></canvas>
+        <div id="evoChartEmpty" class="selnone" style="font-size:11px">Zbieram dane — pierwsza ocena epoki po 800 tickach…</div>
+      </div>
+      <div style="font-size:10.5px;color:var(--dim);margin-top:6px;display:flex;justify-content:space-between">
+        <span><i class="dot" style="background:var(--sheep);width:8px;height:8px"></i> Czas bez zapaści</span>
+        <span id="evoTrendLabel">Trend: —</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>Populacja</h2>
+      <div class="grid mono">
+        <div class="stat" title="Liczba żywych owiec w tej chwili."><div class="k">Owce</div><div class="v" id="cSheep" style="color:var(--sheep)">0</div></div>
+        <div class="stat" title="Liczba żywych wilków w tej chwili."><div class="k">Wilki</div><div class="v" id="cWolf" style="color:var(--wolf)">0</div></div>
+        <div class="stat" title="Liczba dostępnych do zjedzenia roślin w tej chwili."><div class="k">Rośliny</div><div class="v" id="cPlant" style="color:var(--plant)">0</div></div>
+      </div>
+      <div id="chartWrap" style="margin-top:12px"><canvas id="chart"></canvas></div>
+    </div>
+
+    <div class="sec">
+      <h2>Sterowanie</h2>
+      <div class="row">
+        <button id="btnPlay" class="primary">⏸ Pauza</button>
+        <button id="btnReset" class="tiny">↻ Reset</button>
+      </div>
+      <div class="row">
+        <button id="btnSave">💾 Zapisz</button>
+        <button id="btnLoad">📂 Wczytaj</button>
+      </div>
+      <div class="row">
+        <button id="addSheep">+ Owce</button>
+        <button id="addWolf">+ Wilki</button>
+        <button id="addPlant">+ Rośliny</button>
+      </div>
+      <div style="font-size:11.5px;color:var(--muted);margin:4px 0 6px;letter-spacing:.03em">Prędkość symulacji</div>
+      <div class="seg" id="speedSeg">
+        <button data-s="1">1×</button>
+        <button data-s="2" class="on">2×</button>
+        <button data-s="4">4×</button>
+        <button data-s="8">8×</button>
+        <button data-s="16">16×</button>
+      </div>
+
+      <div class="slider" title="Mnożnik szybkości odrastania i wzrostu roślin w całym świecie.">
+        <label>Tempo wzrostu roślin <b id="lPlant">1.0×</b></label>
+        <input type="range" id="sPlant" min="0" max="250" value="100">
+      </div>
+      <div class="slider" title="Jak mocno mutują nowe osobniki — zarówno cechy fizyczne (prędkość, metabolizm, wzrok…), jak i struktura sieci NEAT (nowe połączenia i neurony).">
+        <label>Siła mutacji <b id="lMut">1.0×</b></label>
+        <input type="range" id="sMut" min="0" max="250" value="100">
+      </div>
+
+      <div class="toggle on" id="tSense" title="Pokazuje przerywane linie od zaznaczonego zwierzęcia do celu, który widzi (jedzenie) lub przed którym ucieka/na którego poluje (zagrożenie/ofiara)."><span>Linie zmysłów wybranego</span><span class="sw"></span></div>
+      <div class="toggle on" id="tShadow" title="Włącza cienie i efekt głębi pod zwierzętami i roślinami (czysto wizualne, nie wpływa na symulację)."><span>Cienie i głębia</span><span class="sw"></span></div>
+    </div>
+  </aside>
+</div>
+
+<script src="math.js"></script>
+<script src="neat.js"></script>
+<script src="app.js"></script>
+<script src="visuals.js"></script>
+</body>
+</html>

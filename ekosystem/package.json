@@ -1,0 +1,13 @@
+{
+  "name": "ekosystem",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "check": "node --check math.js && node --check neat.js && node --check app.js && node --check visuals.js",
+    "verify": "npm run check && npm test",
+    "serve": "node scripts/serve.js",
+    "start": "node scripts/serve.js"
+  }
+}
